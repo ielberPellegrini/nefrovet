@@ -1,0 +1,186 @@
+/* --- 1. FONTE E CONFIGURAÇÕES GERAIS (MOBILE) --- */
+body {
+    font-family: 'Montserrat', sans-serif;
+    
+    /* --- MUDANÇA AQUI --- */
+    /* Fundo verde limão para o mobile */
+    background-color: limegreen; /* Você pode trocar por outro tom, ex: #98FB98 */
+    
+    /* Fundo gradiente anterior (agora desativado) */
+    /* background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%); */
+    
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* --- 2. CONTAINER DA IMAGEM (MOBILE) --- */
+/* (Este é o seu "Design sem nome.png") */
+.container-fundo {
+    /* No mobile, ele é um bloco normal na página */
+    position: relative; 
+    width: 100%;
+    padding: 20px 0; /* Espaçamento para a imagem */
+    z-index: 1;
+}
+
+/* ESTILO DA IMAGEM ÚNICA (MOBILE) */
+.container-fundo img {
+    display: block;
+    margin: 0 auto;
+    width: 90%; /* Largura da imagem no celular */
+    max-width: 400px; /* Limite máximo */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 3. AJUSTE DOS WRAPPERS (MOBILE) --- */
+/* Força a altura automática no mobile. */
+.content-wrapper {
+    min-height: auto !important; 
+    justify-content: flex-start !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+    z-index: 1;
+    position: relative;
+}
+
+/* Padding do topo no primeiro card (título) */
+body > .content-wrapper:nth-of-type(1) {
+    padding-bottom: 0 !important;
+    padding-top: 2rem !important;
+}
+
+
+/* --- 4. ESTILO DO CARD (MOBILE) --- */
+/* (Isso se aplica aos DOIS cards: título e botões) */
+.card-custom-width {
+    width: 90%;
+    max-width: 550px;
+    
+    /* Fundo BRANCO SÓLIDO no mobile */
+    background-color: white;
+    backdrop-filter: none;
+    
+    /* Sombra normal de card */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08) !important;
+    border: none;
+}
+
+/* --- 5. CUSTOMIZAÇÃO DO BOTÃO (Sem mudanças) --- */
+.btn-primary {
+    background: linear-gradient(90deg, #8E2DE2 0%, #4A00E0 100%);
+    border: none; 
+    box-shadow: 0 4px 15px rgba(74, 0, 224, 0.2);
+    transition: all 0.3s ease;
+}
+.btn-primary:hover, .btn-primary:focus {
+    transform: translateY(-3px); 
+    box-shadow: 0 7px 20px rgba(74, 0, 224, 0.4);
+    color: white; 
+}
+
+/* --- 6. AJUSTE DE FONTES (Sem mudanças) --- */
+.text-secondary {
+    color: #555 !important;
+    font-weight: 600 !important; 
+}
+.text-muted {
+    font-weight: 600 !important; 
+    color: #555 !important; 
+}
+
+/* --- 7. FOOTER --- */
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    color: #555;
+    background-color: #f5f7fa; /* Fundo do mobile */
+}
+
+
+/* =========================================================
+   VERSÃO DESKTOP (Telas maiores que 768px)
+=========================================================
+*/
+@media (min-width: 768px) {
+
+    /* 1. FUNDO DO BODY (DESKTOP) */
+    body {
+        /* !! TROQUE AQUI PELA SUA NOVA IMAGEM DE DESKTOP !! */
+        background-image: url('./img/Design\ sem\ nome\ \(3\).png');
+        
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        
+        /* --- TRAVA A ALTURA DA TELA E O SCROLL --- */
+        height: 100vh;
+        overflow: hidden; 
+        
+        /* Flexbox para empurrar o footer para baixo */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* 2. ESCONDE OS BLOCOS DE CELULAR (DESKTOP) */
+    
+    /* ESCONDE o primeiro card (título "NefroVet") */
+    body > div:nth-of-type(1) {
+        display: none !important;
+    }
+    
+    /* ESCONDE a imagem do celular */
+    .container-fundo {
+        display: none !important;
+    }
+
+    /* 4. AJUSTE DO WRAPPER PRINCIPAL (DESKTOP) */
+    
+    /* Seleciona o TERCEIRO div filho do body (o card dos botões) */
+    body > div:nth-of-type(3).content-wrapper {
+        /* 'flex-grow: 1' faz este bloco crescer e empurrar o footer */
+        flex-grow: 1;
+        
+        /* Remove a altura mínima para o flexbox funcionar */
+        min-height: 0 !important; 
+        
+        /* Se o card for muito alto, a rolagem acontece AQUI DENTRO */
+        overflow-y: auto;
+        
+        /* Mantém as classes do HTML para centralizar o card */
+        position: relative;
+        z-index: 1;
+        padding-top: 2rem !important;
+        padding-bottom: 2rem !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+    }
+
+    /* 5. CARD TRANSLÚCIDO (DESKTOP) */
+    /* Esta regra se aplica ao único card visível */
+    .card-custom-width {
+        background-color: rgba(255, 255, 255, 0.70); 
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: none !important; 
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* 6. FOOTER (DESKTOP) */
+    .footer {
+        position: relative;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.5); 
+        color: white;
+        
+        /* Garante que o footer não encolha */
+        flex-shrink: 0;
+    }
+}
